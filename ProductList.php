@@ -11,7 +11,16 @@ class ProductList
             }
         }
     }
+
     public function getList(){
         return $this->list;
+    }
+
+    public function getProductByName($productName){
+        foreach ($this->list as  $product) {
+            if($productName == $product['name']){
+                return $product;
+            }
+        }
     }
 }

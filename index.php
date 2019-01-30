@@ -2,10 +2,19 @@
 include_once 'config.php';
 include_once 'ProductList.php';
 include_once 'Render.php';
+include_once 'Cart.php';
+include_once 'RequestHandler.php';
+
 use ezyVet\ProductList;
 use ezyVet\Render;
+use ezyVet\Cart;
+use ezyVet\RequestHandler;
+
 
 $list = new ProductList();
-// var_dump($list->getList());exit();
 $render = new Render();
-echo $render->showProductsList($list)->show();
+$render->showProductsList($list);
+$cart = new Cart($list);
+$handler = new RequestHandler($cart);
+$render->showProductCart($cart);
+echo $render->show();
